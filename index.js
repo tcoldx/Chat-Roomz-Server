@@ -5,20 +5,15 @@ const cors = require("cors");
 const { Server } = require("socket.io");
 const { protocol } = require("socket.io-client");
 const { reset } = require("nodemon");
+const { errorMonitor } = require("stream");
 const port = process.env.PORT || 3000;
 app.use(cors());
 
 const server = http.createServer(app);
 app.get("/", (res, req) => {
-  res.status(200).json({
-    status: 'success',
-    data: {
-        name: 'chatty',
-        version: '0.1.0'
-    }
+res.send("GET called")
 });
 
-})
 const io = new Server(server, {
   cors: {
     origin: "https://git.heroku.com/chattytings.git",
@@ -42,6 +37,9 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(port, () => {
+server.listen(port, (err) => {
+  if (err) {
+    console.log(err)
+  }
     console.log("welcome to the server...")
 })
