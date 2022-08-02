@@ -7,12 +7,14 @@ const { protocol } = require("socket.io-client");
 const { reset } = require("nodemon");
 const { errorMonitor } = require("stream");
 const port = process.env.PORT || 3000;
+
+app.use("/", (res, req) => {
+res.send("GET called")
+});
 app.use(cors());
 
 const server = http.createServer(app);
-app.get("/", (res, req) => {
-res.send("GET called")
-});
+
 
 const io = new Server(server, {
   cors: {
@@ -39,7 +41,7 @@ io.on("connection", (socket) => {
 
 server.listen(port, (err) => {
   if (err) {
-    console.log(err)
+    console.log("error: ", err)
   }
     console.log("welcome to the server...")
 })
