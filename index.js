@@ -16,7 +16,7 @@ res.send("GET called")
 
 const io = new Server(server, {
   cors: {
-    origin: "https://git.heroku.com/chattytings.git",
+    origin: "https://localhost:3000",
   },
 });
 
