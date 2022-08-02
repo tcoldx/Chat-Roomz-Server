@@ -4,11 +4,21 @@ const http = require("http");
 const cors = require("cors");
 const { Server } = require("socket.io");
 const { protocol } = require("socket.io-client");
+const { reset } = require("nodemon");
 const port = process.env.PORT || 3000;
 app.use(cors());
 
 const server = http.createServer(app);
+app.get("/", (res, req) => {
+  res.status(200).json({
+    status: 'success',
+    data: {
+        name: 'chatty',
+        version: '0.1.0'
+    }
+});
 
+})
 const io = new Server(server, {
   cors: {
     origin: "https://git.heroku.com/chattytings.git",
