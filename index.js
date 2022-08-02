@@ -8,8 +8,8 @@ const { reset } = require("nodemon");
 const { errorMonitor } = require("stream");
 const port = process.env.PORT || 3000;
 
-app.use("/", (res, req) => {
-res.send("GET called")
+app.get("/", (req, res) => {
+  res.send("initiate forces!")
 });
 app.use(cors());
 
