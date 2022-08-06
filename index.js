@@ -18,7 +18,8 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "https://cryptoz-chat.herokuapp.com/",
+    origin: "*",
+    methods: ["GET"],
   },
 });
 
