@@ -9,7 +9,7 @@ const { errorMonitor } = require("stream");
 const port = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
-  res.send("initiate forces!")
+  res.send("server up and running!")
 });
 app.use(cors());
 
@@ -18,7 +18,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "https://localhost:3000",
+    origin: "https://cryptoz-chat.herokuapp.com/",
   },
 });
 
